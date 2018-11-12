@@ -76,6 +76,6 @@ public class AccountServiceTest {
         Account account = new Account(1, "My account", 1000);
         account = this.accountService.createNewAccount(account);
 
-        Account updatedAccount = accountService.withdrawalOnAccount(account.getId(), 1000);
+        Account updatedAccount = accountService.withdrawalOnAccount(account.getId(), 1001);
     }
 }
