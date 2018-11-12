@@ -31,11 +31,6 @@ public class AccountRepositoryTest {
         Account account = this.repo.save(new Account(-1, "Isa account", 1000));
         assertThat(account.getId()).isNotEqualTo(-1);
     }
-
-    @Test
-    public void should_can_get_all_operations_history() throws Exception{
-        List<Statement> a = this.repo.getHistory((long) 1);
-        assertThat(a).isInstanceOf(List.class);
-    }
+    
 
 }

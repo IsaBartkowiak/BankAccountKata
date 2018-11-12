@@ -9,7 +9,6 @@ public interface AccountRepository {
 
     Account save(Account account);
     Account findById(long id);
-    List<Statement> getHistory(long accountId);
     List<Account> findAll();
 
 }

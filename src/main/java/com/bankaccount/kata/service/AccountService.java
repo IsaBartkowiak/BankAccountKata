@@ -51,6 +51,7 @@ public class AccountService {
     }
 
     public List<Statement> history(long accountId){
-        return this.accountRepository.getHistory(accountId);
+        Account account = this.accountRepository.findById(accountId);
+        return account.getHistory().getStatements();
     }
 }

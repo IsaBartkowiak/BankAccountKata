@@ -34,9 +34,4 @@ public class InMemoryAccountRepository implements AccountRepository {
         return allAccounts.get(id);
     }
 
-    @Override
-    public List<Statement> getHistory(long accountId){
-        Account account = allAccounts.get(accountId); //for test
-        return account.getHistory().getStatements();
-    }
 }
