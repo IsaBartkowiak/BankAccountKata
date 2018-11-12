@@ -1,30 +1,30 @@
 package com.bankaccount.kata.model;
 
 import com.bankaccount.kata.dao.InMemoryAccountRepository;
+import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class AccountRepositoryTest {
 
-    /*
-    public Account save(long id, String name, double balance);
-    public Account depositOnAccount(long accountId, double amount);
-    public Account withdrawalOnAccount(long accountId, double amount);
-    public List<Statement> getHistory(long accountId);
+    @Autowired
+    private InMemoryAccountRepository repo;
 
-    */
-
-    InMemoryAccountRepository repo;
-
-    @BeforeEach
+    @Before
     public void initializeMockRepo() throws Exception{
-        this.repo = new InMemoryAccountRepository();
-        this.repo.init();
+        this.repo.save(1,"Isa account", 1000);
     }
 
     @Test

@@ -1,17 +1,18 @@
 package com.bankaccount.kata.model;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class HistoryTest {
 
-    History history;
-
-    @BeforeEach
-    public void initializeMockHistory() throws Exception{
-        this.history = new History();
-    }
+    private History history = new History();
 
     @Test
     public void should_add_one_statement_when_one_statement_is_added() throws Exception {
