@@ -36,6 +36,11 @@ public class AccountService {
         if (amount <= 0) {
             throw new IllegalDepositException("Deposit amount must be positive");
         }
+        try{
+            this.accountRepository.findById(accountId);
+        }catch(NullPointerException e) {
+            throw new NullPointerException("Account does not exists");
+        }
         Account account = this.accountRepository.findById(accountId);
         double balanceAfter = account.getBalance() + amount;
         account.setBalance(balanceAfter);

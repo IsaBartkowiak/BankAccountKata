@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.security.auth.login.AccountNotFoundException;
-
 import static org.assertj.core.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
@@ -76,8 +74,8 @@ public class AccountServiceTest {
         Account updatedAccount = accountService.withdrawalOnAccount(account.getId(), 1001);
     }
 
-    @Test(expected = AccountNotFoundedException.class)
+    @Test(expected = NullPointerException.class)
     public void should_deposit_be_refused_when_account_does_not_exists() throws InsufficientProvisionException {
-        Account updatedAccount = accountService.withdrawalOnAccount(-1, 10);
+        Account account = accountService.withdrawalOnAccount(-1, 10);
     }
 }
