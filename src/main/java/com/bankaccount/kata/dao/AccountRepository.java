@@ -8,7 +8,7 @@ import java.util.List;
 public interface AccountRepository {
 
     Account save(Account account);
-    Account findById(long id);
+    Account findById(Integer id);
     List<Account> findAll();
 
 }

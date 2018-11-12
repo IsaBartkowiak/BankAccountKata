@@ -1,5 +1,6 @@
 package com.bankaccount.kata.controller;
 import com.bankaccount.kata.exceptions.IllegalDepositException;
+import com.bankaccount.kata.exceptions.InsufficientProvisionException;
 import com.bankaccount.kata.model.Account;
 import com.bankaccount.kata.model.Amount;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,13 +30,13 @@ public class AccountController {
     }
 
     @RequestMapping(value="/accounts/{id}/deposit", method=RequestMethod.PUT, consumes = "application/json",  produces = "application/json")
-    public Account deposit(@PathVariable(value="id") Long id, @RequestBody Amount amount) throws Exception, IllegalDepositException {
+    public Account deposit(@PathVariable(value="id") Integer id, @RequestBody Amount amount) throws Exception, IllegalDepositException {
         Account a = this.accountService.depositOnAccount(id, amount.getAmount());
         return a;
     }
 
     @RequestMapping(value="/accounts/{id}/withdrawal", method=RequestMethod.PUT, consumes = "application/json",  produces = "application/json")
-    public Account withdrawal(@PathVariable(value="id") Long id, @RequestBody Amount amount) throws Exception {
+    public Account withdrawal(@PathVariable(value="id") Integer id, @RequestBody Amount amount) throws Exception, InsufficientProvisionException {
         Account a = this.accountService.withdrawalOnAccount(id, amount.getAmount());
         return a;
     }
