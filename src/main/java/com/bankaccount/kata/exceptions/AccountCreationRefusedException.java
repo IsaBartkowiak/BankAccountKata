@@ -1,4 +1,4 @@
-package com.bankaccount.kata;
+package com.bankaccount.kata.exceptions;
 
 public class AccountCreationRefusedException extends Throwable {
 

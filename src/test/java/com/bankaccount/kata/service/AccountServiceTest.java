@@ -1,8 +1,8 @@
 package com.bankaccount.kata.service;
 
 
-import com.bankaccount.kata.AccountCreationRefusedException;
-import com.bankaccount.kata.IllegalDepositException;
+import com.bankaccount.kata.exceptions.AccountCreationRefusedException;
+import com.bankaccount.kata.exceptions.IllegalDepositException;
 import com.bankaccount.kata.model.Account;
 import org.junit.Test;
 import org.junit.runner.RunWith;

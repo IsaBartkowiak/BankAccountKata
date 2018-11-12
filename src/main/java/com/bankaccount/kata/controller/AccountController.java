@@ -1,5 +1,5 @@
 package com.bankaccount.kata.controller;
-import com.bankaccount.kata.IllegalDepositException;
+import com.bankaccount.kata.exceptions.IllegalDepositException;
 import com.bankaccount.kata.model.Account;
 import com.bankaccount.kata.model.Amount;
 import org.springframework.beans.factory.annotation.Autowired;
