@@ -2,10 +2,7 @@ package com.bankaccount.kata.model;
 
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Executable;
 import java.time.LocalDateTime;
-import java.util.concurrent.ExecutionException;
-
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
