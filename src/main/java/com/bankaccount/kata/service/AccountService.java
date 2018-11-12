@@ -12,6 +12,7 @@ import java.util.List;
 @Service
 public class AccountService {
 
+    public static final int MINIMUM_AMOUNT_FOR_ACCOUNT_CREATION = 1000;
     @Autowired
     private AccountRepository accountRepository;
 
@@ -20,7 +21,7 @@ public class AccountService {
     }
 
     public Account createNewAccount(Account account) throws AccountCreationRefusedException {
-        if (account.getBalance() < 1000) {
+        if (account.getBalance() < MINIMUM_AMOUNT_FOR_ACCOUNT_CREATION) {
             throw new AccountCreationRefusedException("Initial balance should be at least 1000");
         }
         account = this.accountRepository.save(account);
