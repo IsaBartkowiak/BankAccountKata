@@ -7,13 +7,13 @@ import static org.assertj.core.api.Assertions.*;
 public class AccountTest {
 
     @Test
-    public void should_create_an_account(){
+    public void should_create_an_account() throws Exception{
         Account account = new Account(1, "Isa account", 3000);
         assertThat(account).isInstanceOf(Account.class);
     }
 
     @Test
-    public void should_have_an_history_initialized(){
+    public void should_have_an_history_initialized() throws Exception{
         Account account = new Account(1, "Isa account", 3000);
         assertThat(account.getHistory()).isInstanceOf(List.class);
     }

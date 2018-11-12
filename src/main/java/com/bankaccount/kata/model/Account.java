@@ -8,12 +8,11 @@ public class Account {
     public double balance;
     public final History history;
 
-    public Account(long id, String name, double balance) {
+    public Account(long id, String name, double balance) throws Exception{
         this.id = id;
         this.name = name;
         this.balance = balance;
         this.history = new History();
-        this.history.addLine(0, balance);
     }
 
     public List<Statement> getHistory() {
