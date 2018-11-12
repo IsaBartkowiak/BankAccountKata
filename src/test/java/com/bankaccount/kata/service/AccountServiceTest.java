@@ -75,7 +75,12 @@ public class AccountServiceTest {
     }
 
     @Test(expected = NullPointerException.class)
-    public void should_deposit_be_refused_when_account_does_not_exists() throws InsufficientProvisionException {
+    public void should_deposit_be_refused_when_account_does_not_exists() throws IllegalDepositException {
+        Account account = accountService.depositOnAccount(-1, 10);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void should_withdrawal_be_refused_when_account_does_not_exists() throws InsufficientProvisionException {
         Account account = accountService.withdrawalOnAccount(-1, 10);
     }
 }

@@ -1,13 +1,13 @@
 package com.bankaccount.kata.model;
-
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Account {
     private Integer id;
-    private String name;
-    private double balance;
+    public String name;
+    public double balance;
     private History history;
     private static AtomicInteger at = new AtomicInteger(0);
+
 
     public Account(String name, double balance) {
         this.id =  at.incrementAndGet();
@@ -22,10 +22,6 @@ public class Account {
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getName() {

@@ -49,6 +49,11 @@ public class AccountService {
     }
 
     public Account withdrawalOnAccount(Integer accountId, double amount) throws InsufficientProvisionException {
+        try{
+            this.accountRepository.findById(accountId);
+        }catch(NullPointerException e) {
+            throw new NullPointerException("Account does not exists");
+        }
         Account account = this.accountRepository.findById(accountId);
         double balanceAfter = account.getBalance() - amount;
         if(balanceAfter < 0){
