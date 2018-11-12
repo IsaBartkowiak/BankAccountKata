@@ -8,7 +8,7 @@ public class Account {
     public double balance;
     public final History history;
 
-    public Account(long id, String name, double balance) throws Exception{
+    public Account(long id, String name, double balance) {
         this.id = id;
         this.name = name;
         this.balance = balance;

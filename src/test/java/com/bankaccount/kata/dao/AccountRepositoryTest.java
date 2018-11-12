@@ -2,7 +2,6 @@ package com.bankaccount.kata.model;
 
 import com.bankaccount.kata.dao.InMemoryAccountRepository;
 import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,5 +1,6 @@
 package com.bankaccount.kata.service;
 
+import com.bankaccount.kata.AccountCreationRefusedException;
 import com.bankaccount.kata.dao.AccountRepository;
 import com.bankaccount.kata.dao.InMemoryAccountRepository;
 import com.bankaccount.kata.model.Account;
@@ -18,7 +19,10 @@ public class AccountService {
         return this.accountRepository.findAll();
     }
 
-    public Account createNewAccount(Account account) throws Exception{
+    public Account createNewAccount(Account account) throws AccountCreationRefusedException {
+        if (account.getBalance() < 1000) {
+            throw new AccountCreationRefusedException("Initial balance should be at least 1000");
+        }
         account = this.accountRepository.save(account);
         return account;
     }
