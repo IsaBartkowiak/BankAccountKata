@@ -1,6 +1,6 @@
 package com.bankaccount.kata.service;
 
-import com.bankaccount.kata.dao.AccountRepositoryMemory;
+import com.bankaccount.kata.dao.InMemoryAccountRepository;
 import com.bankaccount.kata.model.Account;
 import com.bankaccount.kata.model.Statement;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +10,10 @@ import java.util.List;
 @Service
 public class AccountService {
 
-    private AccountRepositoryMemory accountRepository;
+    private InMemoryAccountRepository accountRepository;
 
     @Autowired
-    public AccountService(AccountRepositoryMemory accountRepository){
+    public AccountService(InMemoryAccountRepository accountRepository){
         this.accountRepository = accountRepository;
     }
 
@@ -22,7 +22,7 @@ public class AccountService {
     }
 
     public Account createAccount(long id, String name, double balance) throws Exception {
-        return this.accountRepository.createAccount(id, name, balance);
+        return this.accountRepository.save(id, name, balance);
     }
 
     public Account depositOnAccount(long accountId, double amount) throws Exception{

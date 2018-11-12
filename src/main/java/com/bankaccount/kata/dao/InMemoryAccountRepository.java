@@ -8,22 +8,23 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
-public class AccountRepositoryMemory implements AccountRepository{
+public class InMemoryAccountRepository implements AccountRepository{
 
-    private static final HashMap<Long, Account> allAccounts = new HashMap<Long, Account>();
+    private Map<Long, Account> allAccounts = new HashMap<Long, Account>();
 
     @PostConstruct
     public void init() throws Exception {
-        createAccount(1,"Isa account", 1000);
+        save(1,"Isa account", 1000);
     }
 
     public List<Account> getAccounts() {
         return new ArrayList<Account>(allAccounts.values());
     }
 
-    public Account createAccount(long id, String name, double balance) throws Exception{
+    public Account save(long id, String name, double balance) throws Exception{
         Account account = new Account(id, name, balance);
         allAccounts.put(id, account);
         return account;

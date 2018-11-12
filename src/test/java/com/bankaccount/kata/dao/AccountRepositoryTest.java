@@ -1,11 +1,9 @@
 package com.bankaccount.kata.model;
 
-import com.bankaccount.kata.dao.AccountRepository;
-import com.bankaccount.kata.dao.AccountRepositoryMemory;
+import com.bankaccount.kata.dao.InMemoryAccountRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -14,24 +12,24 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class AccountRepositoryTest {
 
     /*
-    public Account createAccount(long id, String name, double balance);
+    public Account save(long id, String name, double balance);
     public Account depositOnAccount(long accountId, double amount);
     public Account withdrawalOnAccount(long accountId, double amount);
     public List<Statement> getHistory(long accountId);
 
     */
 
-    AccountRepositoryMemory repo;
+    InMemoryAccountRepository repo;
 
     @BeforeEach
     public void initializeMockRepo() throws Exception{
-        this.repo = new AccountRepositoryMemory();
+        this.repo = new InMemoryAccountRepository();
         this.repo.init();
     }
 
     @Test
     public void should_can_create_an_account() throws Exception{
-        Account a = this.repo.createAccount((long) 3, "Isa account", 1000);
+        Account a = this.repo.save((long) 3, "Isa account", 1000);
         assertThat(a).isInstanceOf(Account.class);
     }
 
