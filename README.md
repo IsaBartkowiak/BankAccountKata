@@ -1,4 +1,4 @@
-#BANK ACCOUNT KATA
+# BANK ACCOUNT KATA
 
 
 
@@ -9,13 +9,13 @@ The service is a simple web service using a in-memory base. It allows:
 - to make a withdrawal on an account
 
 
-#How to run project
+# How to run project
 
 You can launch by typing in terminal this command
 `mvn spring-boot:run` 
 
 
-#How to test project
+# How to test project
 
 You can find an export of my postman requests in the postman_test.json file
 
