@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface AccountRepository {
 
-    public Account createAccount(long id, String name, double balance);
-    public Account depositOnAccount(long accountId, double amount);
-    public Account withdrawalOnAccount(long accountId, double amount);
+    public Account createAccount(long id, String name, double balance) throws Exception;
+    public Account depositOnAccount(long accountId, double amount) throws Exception;
+    public Account withdrawalOnAccount(long accountId, double amount) throws Exception;
     public List<Statement> getHistory(long accountId);
 
 }
