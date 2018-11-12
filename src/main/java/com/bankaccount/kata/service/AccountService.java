@@ -21,6 +21,9 @@ public class AccountService {
     }
 
     public Account createNewAccount(Account account) throws AccountCreationRefusedException {
+        if (account.getId() != -1) {
+            throw new AccountCreationRefusedException("Account may already exist");
+        }
         if (account.getBalance() < MINIMUM_AMOUNT_FOR_ACCOUNT_CREATION) {
             throw new AccountCreationRefusedException("Initial balance should be at least 1000");
         }

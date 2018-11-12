@@ -20,6 +20,9 @@ public class InMemoryAccountRepository implements AccountRepository{
     }
 
     public Account save(Account account) {
+        if (account.getId() == -1) {
+            account.setId((long) (Math.random() * 1000000));
+        }
         allAccounts.put(account.getId(), account);
         return account;
     }
@@ -28,7 +31,7 @@ public class InMemoryAccountRepository implements AccountRepository{
         Account account = allAccounts.get(accountId);  //for test
         double balanceAfter = account.getBalance() + amount;
         account.setBalance(balanceAfter);
-        account.history.addLine(amount, balanceAfter);
+        account.getHistory().addLine(amount, balanceAfter);
         return account;
     }
 
@@ -36,12 +39,12 @@ public class InMemoryAccountRepository implements AccountRepository{
         Account account = allAccounts.get(accountId); //for test
         double balanceAfter = account.getBalance() - amount;
         account.setBalance(balanceAfter);
-        account.history.addLine(-amount, balanceAfter);
+        account.getHistory().addLine(-amount, balanceAfter);
         return account;
     }
 
     public List<Statement> getHistory(long accountId){
         Account account = allAccounts.get(accountId); //for test
-        return account.getHistory();
+        return account.getHistory().getStatements();
     }
 }

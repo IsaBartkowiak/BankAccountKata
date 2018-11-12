@@ -21,17 +21,16 @@ public class AccountRepositoryTest {
     private InMemoryAccountRepository repo;
 
     @Before
-    public void initializeMockRepo() throws Exception{
+    public void setup() {
         Account account = new Account(1, "Isa account", 1000);
         repo.save(account);
     }
 
     @Test
-    public void should_can_create_an_account() throws Exception{
-        Account a = this.repo.save(new Account((long) 3, "Isa account", 1000));
-        assertThat(a).isInstanceOf(Account.class);
+    public void should_id_be_initialized_when_account_is_saved() {
+        Account account = this.repo.save(new Account(-1, "Isa account", 1000));
+        assertThat(account.getId()).isNotEqualTo(-1);
     }
-
 
     @Test
     public void should_can_deposit_100_on_account_1() throws Exception{

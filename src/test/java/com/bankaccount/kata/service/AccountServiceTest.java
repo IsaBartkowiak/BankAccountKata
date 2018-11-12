@@ -32,4 +32,11 @@ public class AccountServiceTest {
 
         accountService.createNewAccount(accountToCreate);
     }
+
+    @Test(expected = AccountCreationRefusedException.class)
+    public void should_account_creation_be_refused_when_account_id_is_invalid() throws AccountCreationRefusedException {
+        Account accountToCreate = new Account(2, "My account", 1000);
+
+        accountService.createNewAccount(accountToCreate);
+    }
 }

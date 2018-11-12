@@ -21,7 +21,7 @@ public class AccountTest {
     @Test
     public void should_have_an_history_initialized() throws Exception{
         Account account = new Account(1, "Isa account", 3000);
-        assertThat(account.getHistory()).isInstanceOf(List.class);
+        assertThat(account.getHistory()).isInstanceOf(History.class);
     }
 
 }

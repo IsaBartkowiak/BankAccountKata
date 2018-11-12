@@ -3,10 +3,10 @@ package com.bankaccount.kata.model;
 import java.util.List;
 
 public class Account {
-    private final long id;
-    private final String name;
-    public double balance;
-    public final History history;
+    private long id;
+    private String name;
+    private double balance;
+    private History history;
 
     public Account(long id, String name, double balance) {
         this.id = id;
@@ -15,12 +15,16 @@ public class Account {
         this.history = new History();
     }
 
-    public List<Statement> getHistory() {
-        return this.history.getStatements();
+    public History getHistory() {
+        return this.history;
     }
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
