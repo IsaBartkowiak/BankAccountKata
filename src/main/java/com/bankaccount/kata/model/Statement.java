@@ -3,6 +3,8 @@ import java.time.LocalDateTime;
 
 public class Statement {
 
+    public static final String DEPOSIT = "DEPOSIT";
+    public static final String WITHDRAWAL = "WITHDRAWAL";
     private LocalDateTime localDate;
     private double amount;
     private double balance;
@@ -12,7 +14,7 @@ public class Statement {
         this.localDate = date;
         this.amount = amount;
         this.balance = balance;
-        this.operationType = amount > 0 ? "DEPOSIT" : "WITHDRAWAL";
+        this.operationType = amount > 0 ? DEPOSIT : WITHDRAWAL;
     }
 
     @Override
