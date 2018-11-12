@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class History {
-    public final static ArrayList<Statement> statements = new ArrayList<>();
+    private ArrayList<Statement> statements = new ArrayList<>();
 
     public List<Statement> getStatements(){
         return statements;
