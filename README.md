@@ -17,6 +17,12 @@ You can launch by typing in terminal this command
 
 # How to test project
 
+## Automatic testing
+
+`mvn test`
+
+## Manual test
+
 You can find an export of my postman requests in the postman_test.json file
 
 `
