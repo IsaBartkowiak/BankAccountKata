@@ -15,18 +15,12 @@ public class InMemoryAccountRepository implements AccountRepository{
 
     private Map<Long, Account> allAccounts = new HashMap<Long, Account>();
 
-    @PostConstruct
-    public void init() throws Exception {
-        save(1,"Isa account", 1000);
-    }
-
-    public List<Account> getAccounts() {
+    public List<Account> findAll() {
         return new ArrayList<Account>(allAccounts.values());
     }
 
-    public Account save(long id, String name, double balance) throws Exception{
-        Account account = new Account(id, name, balance);
-        allAccounts.put(id, account);
+    public Account save(Account account) {
+        allAccounts.put(account.getId(), account);
         return account;
     }
 

@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -24,12 +23,13 @@ public class AccountRepositoryTest {
 
     @Before
     public void initializeMockRepo() throws Exception{
-        this.repo.save(1,"Isa account", 1000);
+        Account account = new Account(1, "Isa account", 1000);
+        repo.save(account);
     }
 
     @Test
     public void should_can_create_an_account() throws Exception{
-        Account a = this.repo.save((long) 3, "Isa account", 1000);
+        Account a = this.repo.save(new Account((long) 3, "Isa account", 1000));
         assertThat(a).isInstanceOf(Account.class);
     }
 
