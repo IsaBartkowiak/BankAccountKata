@@ -8,13 +8,10 @@ public class Statement {
     private double balance;
     private String operationType;
 
-    Statement(LocalDateTime date, double amount, double balance) throws Exception {
+    Statement(LocalDateTime date, double amount, double balance) {
         this.localDate = date;
         this.amount = amount;
         this.balance = balance;
-        if(amount == 0){
-            throw new Exception("Amount of operation can't be 0");
-        }
         this.operationType = amount > 0 ? "DEPOSIT" : "WITHDRAWAL";
     }
 

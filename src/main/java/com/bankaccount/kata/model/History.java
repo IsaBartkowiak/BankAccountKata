@@ -11,7 +11,7 @@ public class History {
         return statements;
     }
 
-    public void addLine(double amount, double balance) throws Exception{
+    public void addStatement(double amount, double balance) {
         LocalDateTime date = LocalDateTime.now();
         Statement statement = new Statement(date, amount, balance);
         this.statements.add(statement);

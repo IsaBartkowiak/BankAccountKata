@@ -8,8 +8,7 @@ import java.util.List;
 public interface AccountRepository {
 
     Account save(Account account);
-    Account depositOnAccount(long accountId, double amount) throws Exception;
-    Account withdrawalOnAccount(long accountId, double amount) throws Exception;
+    Account findById(long id);
     List<Statement> getHistory(long accountId);
     List<Account> findAll();
 

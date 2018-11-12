@@ -1,6 +1,5 @@
 package com.bankaccount.kata.model;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +15,7 @@ public class HistoryTest {
 
     @Test
     public void should_add_one_statement_when_one_statement_is_added() throws Exception {
-        this.history.addLine(100,100);
+        this.history.addStatement(100,100);
         System.out.println(this.history.getStatements());
         assertThat(this.history.getStatements().size()).isEqualTo(1);
     }

@@ -39,4 +39,24 @@ public class AccountServiceTest {
 
         accountService.createNewAccount(accountToCreate);
     }
+
+    @Test
+    public void should_deposit_on_an_existing_account_be_authorized() throws AccountCreationRefusedException {
+        Account account = new Account(-1, "My account", 1000);
+        account = this.accountService.createNewAccount(account);
+
+        Account updatedAccount = accountService.depositOnAccount(account.getId(), 1000);
+
+        assertThat(updatedAccount.getBalance()).isEqualTo(2000);
+    }
+
+    @Test
+    public void should_withdrawal_be_allowed_is_account_has_enough_provision() throws AccountCreationRefusedException {
+        Account account = new Account(-1, "My account", 1000);
+        account = this.accountService.createNewAccount(account);
+
+        Account updatedAccount = accountService.withdrawalOnAccount(account.getId(), 1000);
+
+        assertThat(updatedAccount.getBalance()).isEqualTo(0);
+    }
 }
