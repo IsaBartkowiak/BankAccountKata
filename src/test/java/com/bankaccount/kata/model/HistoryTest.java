@@ -2,10 +2,6 @@ package com.bankaccount.kata.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDateTime;
-import java.util.concurrent.ExecutionException;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class HistoryTest {
