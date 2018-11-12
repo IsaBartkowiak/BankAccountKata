@@ -31,6 +31,6 @@ public class AccountRepositoryTest {
         Account account = this.repo.save(new Account(-1, "Isa account", 1000));
         assertThat(account.getId()).isNotEqualTo(-1);
     }
-    
+
 
 }

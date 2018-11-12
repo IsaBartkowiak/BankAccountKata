@@ -9,6 +9,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.naming.InsufficientResourcesException;
+
 import static org.assertj.core.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
@@ -60,12 +63,19 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void should_withdrawal_be_allowed_is_account_has_enough_provision() throws AccountCreationRefusedException {
-        Account account = new Account(-1, "My account", 1000);
+    public void should_withdrawal_be_allowed_when_account_has_enough_provision() throws AccountCreationRefusedException {
+        Account account = new Account(1, "My account", 1000);
         account = this.accountService.createNewAccount(account);
 
         Account updatedAccount = accountService.withdrawalOnAccount(account.getId(), 1000);
-
         assertThat(updatedAccount.getBalance()).isEqualTo(0);
+    }
+
+    @Test(expected = InsufficientProvisionException.class)
+    public void should_withdrawal_be_refused_when_account_has_not_enough_provision() throws AccountCreationRefusedException {
+        Account account = new Account(1, "My account", 1000);
+        account = this.accountService.createNewAccount(account);
+
+        Account updatedAccount = accountService.withdrawalOnAccount(account.getId(), 1000);
     }
 }
