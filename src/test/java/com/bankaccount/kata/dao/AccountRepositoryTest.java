@@ -28,6 +28,7 @@ public class AccountRepositoryTest {
     public void should_id_be_initialized_when_account_is_saved() {
         Account account = this.repo.save(new Account("Isa account", 1000));
         assertThat(account.getId()).isNotEqualTo(-1);
+        assertThat(account).isInstanceOf(Account.class);
     }
 
 
