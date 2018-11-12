@@ -1,4 +1,5 @@
 package com.bankaccount.kata.controller;
+import com.bankaccount.kata.IllegalDepositException;
 import com.bankaccount.kata.model.Account;
 import com.bankaccount.kata.model.Amount;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class AccountController {
     }
 
     @RequestMapping(value="/accounts/{id}/deposit", method=RequestMethod.PUT, consumes = "application/json",  produces = "application/json")
-    public Account deposit(@PathVariable(value="id") Long id, @RequestBody Amount amount) throws Exception{
+    public Account deposit(@PathVariable(value="id") Long id, @RequestBody Amount amount) throws Exception, IllegalDepositException {
         Account a = this.accountService.depositOnAccount(id, amount.getAmount());
         return a;
     }

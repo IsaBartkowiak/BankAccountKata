@@ -1,6 +1,7 @@
 package com.bankaccount.kata.service;
 
 import com.bankaccount.kata.AccountCreationRefusedException;
+import com.bankaccount.kata.IllegalDepositException;
 import com.bankaccount.kata.dao.AccountRepository;
 import com.bankaccount.kata.model.Account;
 import com.bankaccount.kata.model.Statement;
@@ -30,7 +31,10 @@ public class AccountService {
         return account;
     }
 
-    public Account depositOnAccount(long accountId, double amount) {
+    public Account depositOnAccount(long accountId, double amount) throws IllegalDepositException {
+        if (amount <= 0) {
+            throw new IllegalDepositException("Deposit amount must be positive");
+        }
         Account account = this.accountRepository.findById(accountId);
         double balanceAfter = account.getBalance() + amount;
         account.setBalance(balanceAfter);

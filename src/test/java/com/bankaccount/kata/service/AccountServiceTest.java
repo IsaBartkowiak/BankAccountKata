@@ -2,6 +2,7 @@ package com.bankaccount.kata.service;
 
 
 import com.bankaccount.kata.AccountCreationRefusedException;
+import com.bankaccount.kata.IllegalDepositException;
 import com.bankaccount.kata.model.Account;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,13 +42,21 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void should_deposit_on_an_existing_account_be_authorized() throws AccountCreationRefusedException {
+    public void should_accept_deposit_when_amount_is_positive() throws AccountCreationRefusedException, IllegalDepositException {
         Account account = new Account(-1, "My account", 1000);
         account = this.accountService.createNewAccount(account);
 
         Account updatedAccount = accountService.depositOnAccount(account.getId(), 1000);
 
         assertThat(updatedAccount.getBalance()).isEqualTo(2000);
+    }
+
+    @Test(expected = IllegalDepositException.class)
+    public void should_refuse_deposit_when_amount_is_negative() throws AccountCreationRefusedException, IllegalDepositException {
+        Account account = new Account(-1, "My account", 1000);
+        account = this.accountService.createNewAccount(account);
+
+        accountService.depositOnAccount(account.getId(), -50);
     }
 
     @Test
